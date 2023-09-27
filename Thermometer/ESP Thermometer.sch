@@ -237,84 +237,6 @@
 </deviceset>
 </devicesets>
 </library>
-<library name="HTU21D">
-<description>&lt;SENSOR SOLUTIONS - TE CONNECTIVITY - HTU21D - HUMIDITY/TEMP SENSOR, DIGITAL, DFN-6&lt;/b&gt;&lt;p&gt;
-&lt;author&gt;Created by SamacSys&lt;/author&gt;</description>
-<packages>
-<package name="SON100P300X300X100-7N">
-<description>&lt;b&gt;HTU21D&lt;/b&gt;&lt;br&gt;
-</description>
-<smd name="1" x="-1.45" y="1" dx="0.8" dy="0.45" layer="1"/>
-<smd name="2" x="-1.45" y="0" dx="0.8" dy="0.45" layer="1"/>
-<smd name="3" x="-1.45" y="-1" dx="0.8" dy="0.45" layer="1"/>
-<smd name="4" x="1.45" y="-1" dx="0.8" dy="0.45" layer="1"/>
-<smd name="5" x="1.45" y="0" dx="0.8" dy="0.45" layer="1"/>
-<smd name="6" x="1.45" y="1" dx="0.8" dy="0.45" layer="1"/>
-<smd name="7" x="0" y="0" dx="2.5" dy="1.6" layer="1" rot="R90"/>
-<text x="0" y="0" size="1.27" layer="25" align="center">&gt;NAME</text>
-<text x="0" y="0" size="1.27" layer="27" align="center">&gt;VALUE</text>
-<wire x1="-2.1" y1="1.788" x2="2.1" y2="1.788" width="0.05" layer="51"/>
-<wire x1="2.1" y1="1.788" x2="2.1" y2="-1.788" width="0.05" layer="51"/>
-<wire x1="2.1" y1="-1.788" x2="-2.1" y2="-1.788" width="0.05" layer="51"/>
-<wire x1="-2.1" y1="-1.788" x2="-2.1" y2="1.788" width="0.05" layer="51"/>
-<wire x1="-1.5" y1="1.5" x2="1.5" y2="1.5" width="0.1" layer="51"/>
-<wire x1="1.5" y1="1.5" x2="1.5" y2="-1.5" width="0.1" layer="51"/>
-<wire x1="1.5" y1="-1.5" x2="-1.5" y2="-1.5" width="0.1" layer="51"/>
-<wire x1="-1.5" y1="-1.5" x2="-1.5" y2="1.5" width="0.1" layer="51"/>
-<wire x1="-1.5" y1="0.75" x2="-0.75" y2="1.5" width="0.1" layer="51"/>
-<circle x="-1.85" y="1.725" radius="0.125" width="0.25" layer="25"/>
-</package>
-</packages>
-<symbols>
-<symbol name="HTU21D">
-<wire x1="5.08" y1="2.54" x2="25.4" y2="2.54" width="0.254" layer="94"/>
-<wire x1="25.4" y1="-12.7" x2="25.4" y2="2.54" width="0.254" layer="94"/>
-<wire x1="25.4" y1="-12.7" x2="5.08" y2="-12.7" width="0.254" layer="94"/>
-<wire x1="5.08" y1="2.54" x2="5.08" y2="-12.7" width="0.254" layer="94"/>
-<text x="26.67" y="7.62" size="1.778" layer="95" align="center-left">&gt;NAME</text>
-<text x="26.67" y="5.08" size="1.778" layer="96" align="center-left">&gt;VALUE</text>
-<pin name="DATA" x="0" y="0" length="middle"/>
-<pin name="GND" x="0" y="-2.54" length="middle"/>
-<pin name="NC_1" x="0" y="-5.08" length="middle"/>
-<pin name="EP" x="15.24" y="-17.78" length="middle" rot="R90"/>
-<pin name="SCK" x="30.48" y="0" length="middle" rot="R180"/>
-<pin name="VDD" x="30.48" y="-2.54" length="middle" rot="R180"/>
-<pin name="NC_2" x="30.48" y="-5.08" length="middle" rot="R180"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="HTU21D" prefix="HM">
-<description>&lt;b&gt;SENSOR SOLUTIONS - TE CONNECTIVITY - HTU21D - HUMIDITY/TEMP SENSOR, DIGITAL, DFN-6&lt;/b&gt;&lt;p&gt;
-Source: &lt;a href="http://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&amp;DocId=Data SheetHPC199_6A6pdfEnglishENG_DS_HPC199_6_A6.pdfCAT-HSC0004"&gt; Datasheet &lt;/a&gt;</description>
-<gates>
-<gate name="G$1" symbol="HTU21D" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="SON100P300X300X100-7N">
-<connects>
-<connect gate="G$1" pin="DATA" pad="1"/>
-<connect gate="G$1" pin="EP" pad="7"/>
-<connect gate="G$1" pin="GND" pad="2"/>
-<connect gate="G$1" pin="NC_1" pad="3"/>
-<connect gate="G$1" pin="NC_2" pad="4"/>
-<connect gate="G$1" pin="SCK" pad="6"/>
-<connect gate="G$1" pin="VDD" pad="5"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="DESCRIPTION" value="SENSOR SOLUTIONS - TE CONNECTIVITY - HTU21D - HUMIDITY/TEMP SENSOR, DIGITAL, DFN-6" constant="no"/>
-<attribute name="HEIGHT" value="1mm" constant="no"/>
-<attribute name="MANUFACTURER_NAME" value="TE Connectivity" constant="no"/>
-<attribute name="MANUFACTURER_PART_NUMBER" value="HTU21D" constant="no"/>
-<attribute name="MOUSER_PART_NUMBER" value="824-HTU21D" constant="no"/>
-<attribute name="MOUSER_PRICE-STOCK" value="https://www.mouser.co.uk/ProductDetail/Measurement-Specialties/HTU21D?qs=tx5doIiTu8oixw1WN5Uy8A%3D%3D" constant="no"/>
-</technology>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
 <library name="TB006-508-02BE" urn="urn:adsk.eagle:library:29069108">
 <description>&lt;Fixed Terminal Blocks screw type, 5.08 , horizontal, 2 poles, CUI Blue, slotted screw, PCB mount&lt;/b&gt;&lt;p&gt;
 &lt;author&gt;Created by SamacSys&lt;/author&gt;</description>
@@ -942,6 +864,97 @@ Source: &lt;a href="https://www.molex.com/pdm_docs/sd/528520670_sd.pdf"&gt; Data
 </deviceset>
 </devicesets>
 </library>
+<library name="HS3003" urn="urn:adsk.eagle:library:41704214">
+<description>&lt;The HS3003 is a highly-accurate, fully-calibrated relative humidity and temperature sensor. The high accuracy, fast measurement response time, and long-term stability, along with the small package size, makes the HS3003 ideal for a wide number of applications from portable to harsh environments.An integrated calibration and temperature compensation logic provides fully corrected RH and T values via a standard ICoutput. The measured data is internally corrected and compensated for accurate operation over a&lt;/b&gt;&lt;p&gt;
+&lt;author&gt;Created by SamacSys&lt;/author&gt;</description>
+<packages>
+<package name="HS3004" urn="urn:adsk.eagle:footprint:41704215/1" library_version="2">
+<description>&lt;b&gt;LHG6D1&lt;/b&gt;&lt;br&gt;
+</description>
+<smd name="1" x="1" y="1.05" dx="0.61" dy="0.35" layer="1" rot="R90"/>
+<smd name="2" x="0" y="1.05" dx="0.61" dy="0.35" layer="1" rot="R90"/>
+<smd name="3" x="-1" y="1.05" dx="0.61" dy="0.35" layer="1" rot="R90"/>
+<smd name="4" x="-1" y="-1.05" dx="0.61" dy="0.35" layer="1" rot="R90"/>
+<smd name="5" x="0" y="-1.05" dx="0.61" dy="0.35" layer="1" rot="R90"/>
+<smd name="6" x="1" y="-1.05" dx="0.61" dy="0.35" layer="1" rot="R90"/>
+<text x="0" y="0.272" size="1.27" layer="25" align="center">&gt;NAME</text>
+<text x="0" y="0.272" size="1.27" layer="27" align="center">&gt;VALUE</text>
+<wire x1="-1.5" y1="1.205" x2="1.5" y2="1.205" width="0.2" layer="51"/>
+<wire x1="1.5" y1="1.205" x2="1.5" y2="-1.205" width="0.2" layer="51"/>
+<wire x1="1.5" y1="-1.205" x2="-1.5" y2="-1.205" width="0.2" layer="51"/>
+<wire x1="-1.5" y1="-1.205" x2="-1.5" y2="1.205" width="0.2" layer="51"/>
+<wire x1="-2.5" y1="2.9" x2="2.5" y2="2.9" width="0.1" layer="51"/>
+<wire x1="2.5" y1="2.9" x2="2.5" y2="-2.355" width="0.1" layer="51"/>
+<wire x1="2.5" y1="-2.355" x2="-2.5" y2="-2.355" width="0.1" layer="51"/>
+<wire x1="-2.5" y1="-2.355" x2="-2.5" y2="2.9" width="0.1" layer="51"/>
+<wire x1="1.5" y1="0.6" x2="1.5" y2="-0.6" width="0.1" layer="21"/>
+<wire x1="-1.5" y1="0.6" x2="-1.5" y2="-0.8" width="0.1" layer="21"/>
+<wire x1="1" y1="1.8" x2="1" y2="1.8" width="0.2" layer="21"/>
+<wire x1="1" y1="1.8" x2="0.8" y2="1.8" width="0.2" layer="21" curve="180"/>
+<wire x1="0.8" y1="1.8" x2="0.8" y2="1.8" width="0.2" layer="21"/>
+<wire x1="0.8" y1="1.8" x2="1" y2="1.8" width="0.2" layer="21" curve="180"/>
+</package>
+</packages>
+<packages3d>
+<package3d name="HS3004" urn="urn:adsk.eagle:package:41704217/2" type="model" library_version="2">
+<description>&lt;b&gt;LHG6D1&lt;/b&gt;&lt;br&gt;
+</description>
+<packageinstances>
+<packageinstance name="HS3004"/>
+</packageinstances>
+</package3d>
+</packages3d>
+<symbols>
+<symbol name="HS3003" urn="urn:adsk.eagle:symbol:41704216/1" library_version="2">
+<wire x1="5.08" y1="2.54" x2="20.32" y2="2.54" width="0.254" layer="94"/>
+<wire x1="20.32" y1="-7.62" x2="20.32" y2="2.54" width="0.254" layer="94"/>
+<wire x1="20.32" y1="-7.62" x2="5.08" y2="-7.62" width="0.254" layer="94"/>
+<wire x1="5.08" y1="2.54" x2="5.08" y2="-7.62" width="0.254" layer="94"/>
+<text x="21.59" y="7.62" size="1.778" layer="95" align="center-left">&gt;NAME</text>
+<text x="21.59" y="5.08" size="1.778" layer="96" align="center-left">&gt;VALUE</text>
+<pin name="SCL" x="25.4" y="-5.08" length="middle" rot="R180"/>
+<pin name="SDA" x="25.4" y="-2.54" length="middle" rot="R180"/>
+<pin name="VC" x="25.4" y="0" length="middle" rot="R180"/>
+<pin name="VDD" x="0" y="0" length="middle"/>
+<pin name="NC" x="0" y="-2.54" length="middle" direction="nc"/>
+<pin name="VSS" x="0" y="-5.08" length="middle"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="HS3003" urn="urn:adsk.eagle:component:41704218/2" prefix="IC" library_version="2">
+<description>&lt;b&gt;The HS3003 is a highly-accurate, fully-calibrated relative humidity and temperature sensor. The high accuracy, fast measurement response time, and long-term stability, along with the small package size, makes the HS3003 ideal for a wide number of applications from portable to harsh environments.An integrated calibration and temperature compensation logic provides fully corrected RH and T values via a standard ICoutput. The measured data is internally corrected and compensated for accurate operation over a&lt;/b&gt;&lt;p&gt;
+Source: &lt;a href="https://www.idt.com/document/dst/hs300x-datasheet"&gt; Datasheet &lt;/a&gt;</description>
+<gates>
+<gate name="G$1" symbol="HS3003" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="HS3004">
+<connects>
+<connect gate="G$1" pin="NC" pad="5"/>
+<connect gate="G$1" pin="SCL" pad="1"/>
+<connect gate="G$1" pin="SDA" pad="2"/>
+<connect gate="G$1" pin="VC" pad="3"/>
+<connect gate="G$1" pin="VDD" pad="4"/>
+<connect gate="G$1" pin="VSS" pad="6"/>
+</connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:41704217/2"/>
+</package3dinstances>
+<technologies>
+<technology name="">
+<attribute name="DESCRIPTION" value="The HS3003 is a highly-accurate, fully-calibrated relative humidity and temperature sensor. The high accuracy, fast measurement response time, and long-term stability, along with the small package size, makes the HS3003 ideal for a wide number of applications from portable to harsh environments.An integrated calibration and temperature compensation logic provides fully corrected RH and T values via a standard ICoutput. The measured data is internally corrected and compensated for accurate operation over a" constant="no"/>
+<attribute name="HEIGHT" value="0.9mm" constant="no"/>
+<attribute name="MANUFACTURER_NAME" value="Renesas Electronics" constant="no"/>
+<attribute name="MANUFACTURER_PART_NUMBER" value="HS3003" constant="no"/>
+<attribute name="MOUSER_PART_NUMBER" value="972-HS3003" constant="no"/>
+<attribute name="MOUSER_PRICE-STOCK" value="https://www.mouser.co.uk/ProductDetail/Renesas-Electronics/HS3003?qs=1mbolxNpo8dE0wHdd8IyGw%3D%3D" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -953,7 +966,6 @@ Source: &lt;a href="https://www.molex.com/pdm_docs/sd/528520670_sd.pdf"&gt; Data
 </classes>
 <parts>
 <part name="PS1" library="RAC02-3.3SGB" library_urn="urn:adsk.eagle:library:29069088" deviceset="RAC02-3.3SGB" device="" package3d_urn="urn:adsk.eagle:package:29069091/2"/>
-<part name="HM1" library="HTU21D" deviceset="HTU21D" device=""/>
 <part name="J1" library="TB006-508-02BE" library_urn="urn:adsk.eagle:library:29069108" deviceset="TB006-508-02BE" device="" package3d_urn="urn:adsk.eagle:package:29069112/3"/>
 <part name="S1" library="PTS636_SP50_SMTR_LFS" deviceset="PTS636_SP50_SMTR_LFS" device=""/>
 <part name="U1" library="esp8266modules" library_urn="urn:adsk.eagle:library:29068985" deviceset="ESP12E" device="SMD" package3d_urn="urn:adsk.eagle:package:29069041/3"/>
@@ -971,17 +983,19 @@ Source: &lt;a href="https://www.molex.com/pdm_docs/sd/528520670_sd.pdf"&gt; Data
 <part name="P+4" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
 <part name="C1" library="0805YC103J4T2A" library_urn="urn:adsk.eagle:library:37164964" deviceset="0805YC103J4T2A" device="" package3d_urn="urn:adsk.eagle:package:37164967/2" value="0.1uF"/>
 <part name="GND6" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="GND7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
-<part name="P+6" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
 <part name="R4" library="RC0805FR-07330RL" library_urn="urn:adsk.eagle:library:37164869" deviceset="RC0805FR-07330RL" device="" package3d_urn="urn:adsk.eagle:package:37164874/2" value="10K"/>
-<part name="R5" library="RC0805FR-07330RL" library_urn="urn:adsk.eagle:library:37164869" deviceset="RC0805FR-07330RL" device="" package3d_urn="urn:adsk.eagle:package:37164874/2" value="4.7K"/>
-<part name="R6" library="RC0805FR-07330RL" library_urn="urn:adsk.eagle:library:37164869" deviceset="RC0805FR-07330RL" device="" package3d_urn="urn:adsk.eagle:package:37164874/2" value="4.7K"/>
+<part name="R5" library="RC0805FR-07330RL" library_urn="urn:adsk.eagle:library:37164869" deviceset="RC0805FR-07330RL" device="" package3d_urn="urn:adsk.eagle:package:37164874/2" value="2.2K"/>
+<part name="R6" library="RC0805FR-07330RL" library_urn="urn:adsk.eagle:library:37164869" deviceset="RC0805FR-07330RL" device="" package3d_urn="urn:adsk.eagle:package:37164874/2" value="2.2K"/>
 <part name="P+7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
-<part name="P+8" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
 <part name="P+9" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
 <part name="J2" library="52852-0670" library_urn="urn:adsk.eagle:library:39834973" deviceset="52852-0670" device="" package3d_urn="urn:adsk.eagle:package:39834977/2"/>
 <part name="GND8" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="P+10" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
+<part name="IC1" library="HS3003" library_urn="urn:adsk.eagle:library:41704214" deviceset="HS3003" device="" package3d_urn="urn:adsk.eagle:package:41704217/2"/>
+<part name="GND5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="C2" library="0805YC103J4T2A" library_urn="urn:adsk.eagle:library:37164964" deviceset="0805YC103J4T2A" device="" package3d_urn="urn:adsk.eagle:package:37164967/2" value="0.1uF"/>
+<part name="GND7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
+<part name="P+5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -991,9 +1005,6 @@ Source: &lt;a href="https://www.molex.com/pdm_docs/sd/528520670_sd.pdf"&gt; Data
 <instance part="PS1" gate="G$1" x="-101.6" y="152.4" smashed="yes">
 <attribute name="NAME" x="-114.3" y="161.29" size="1.778" layer="95"/>
 <attribute name="VALUE" x="-114.3" y="142.24" size="1.778" layer="96"/>
-</instance>
-<instance part="HM1" gate="G$1" x="154.94" y="157.48" smashed="yes">
-<attribute name="VALUE" x="166.37" y="162.56" size="1.778" layer="96" align="center-left"/>
 </instance>
 <instance part="J1" gate="G$1" x="-129.54" y="152.4" smashed="yes" rot="R180">
 <attribute name="NAME" x="-140.97" y="152.4" size="1.778" layer="95" rot="R180" align="center-left"/>
@@ -1047,26 +1058,20 @@ Source: &lt;a href="https://www.molex.com/pdm_docs/sd/528520670_sd.pdf"&gt; Data
 <instance part="P+4" gate="VCC" x="38.1" y="58.42" smashed="yes">
 <attribute name="VALUE" x="35.56" y="55.88" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="C1" gate="G$1" x="170.18" y="127" smashed="yes">
-<attribute name="NAME" x="170.18" y="130.81093125" size="1.77843125" layer="95"/>
-<attribute name="VALUE" x="170.18" y="121.91151875" size="1.78096875" layer="96"/>
+<instance part="C1" gate="G$1" x="170.18" y="144.78" smashed="yes" rot="R270">
+<attribute name="NAME" x="173.99093125" y="144.78" size="1.77843125" layer="95" rot="R270"/>
+<attribute name="VALUE" x="165.09151875" y="144.78" size="1.78096875" layer="96" rot="R270"/>
 </instance>
-<instance part="GND6" gate="1" x="170.18" y="137.16" smashed="yes">
-<attribute name="VALUE" x="167.64" y="134.62" size="1.778" layer="96"/>
-</instance>
-<instance part="GND7" gate="1" x="144.78" y="124.46" smashed="yes">
-<attribute name="VALUE" x="142.24" y="121.92" size="1.778" layer="96"/>
-</instance>
-<instance part="P+6" gate="VCC" x="193.04" y="157.48" smashed="yes">
-<attribute name="VALUE" x="190.5" y="154.94" size="1.778" layer="96" rot="R90"/>
+<instance part="GND6" gate="1" x="215.9" y="157.48" smashed="yes">
+<attribute name="VALUE" x="213.36" y="154.94" size="1.778" layer="96"/>
 </instance>
 <instance part="R4" gate="G$1" x="27.94" y="170.18" smashed="yes">
 <attribute name="NAME" x="20.315559375" y="172.72148125" size="2.54148125" layer="95"/>
 <attribute name="VALUE" x="20.31003125" y="165.093359375" size="2.54331875" layer="96"/>
 </instance>
-<instance part="R5" gate="G$1" x="195.58" y="182.88" smashed="yes" rot="R90">
-<attribute name="NAME" x="193.03851875" y="175.255559375" size="2.54148125" layer="95" rot="R90"/>
-<attribute name="VALUE" x="200.666640625" y="175.25003125" size="2.54331875" layer="96" rot="R90"/>
+<instance part="R5" gate="G$1" x="160.02" y="185.42" smashed="yes" rot="R90">
+<attribute name="NAME" x="157.47851875" y="177.795559375" size="2.54148125" layer="95" rot="R90"/>
+<attribute name="VALUE" x="165.106640625" y="177.79003125" size="2.54331875" layer="96" rot="R90"/>
 </instance>
 <instance part="R6" gate="G$1" x="144.78" y="185.42" smashed="yes" rot="R90">
 <attribute name="NAME" x="142.23851875" y="177.795559375" size="2.54148125" layer="95" rot="R90"/>
@@ -1074,9 +1079,6 @@ Source: &lt;a href="https://www.molex.com/pdm_docs/sd/528520670_sd.pdf"&gt; Data
 </instance>
 <instance part="P+7" gate="VCC" x="144.78" y="198.12" smashed="yes">
 <attribute name="VALUE" x="142.24" y="195.58" size="1.778" layer="96" rot="R90"/>
-</instance>
-<instance part="P+8" gate="VCC" x="195.58" y="195.58" smashed="yes">
-<attribute name="VALUE" x="193.04" y="193.04" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="P+9" gate="VCC" x="45.72" y="172.72" smashed="yes">
 <attribute name="VALUE" x="43.18" y="170.18" size="1.778" layer="96" rot="R90"/>
@@ -1087,6 +1089,22 @@ Source: &lt;a href="https://www.molex.com/pdm_docs/sd/528520670_sd.pdf"&gt; Data
 </instance>
 <instance part="P+10" gate="VCC" x="208.28" y="66.04" smashed="yes">
 <attribute name="VALUE" x="205.74" y="63.5" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="IC1" gate="G$1" x="200.66" y="154.94" smashed="yes" rot="R180">
+<attribute name="VALUE" x="191.77" y="165.1" size="1.778" layer="96" rot="R180" align="center-left"/>
+</instance>
+<instance part="GND5" gate="1" x="170.18" y="137.16" smashed="yes">
+<attribute name="VALUE" x="167.64" y="134.62" size="1.778" layer="96"/>
+</instance>
+<instance part="C2" gate="G$1" x="205.74" y="142.24" smashed="yes" rot="R90">
+<attribute name="NAME" x="201.92906875" y="142.24" size="1.77843125" layer="95" rot="R90"/>
+<attribute name="VALUE" x="210.82848125" y="142.24" size="1.78096875" layer="96" rot="R90"/>
+</instance>
+<instance part="GND7" gate="1" x="205.74" y="137.16" smashed="yes">
+<attribute name="VALUE" x="203.2" y="134.62" size="1.778" layer="96"/>
+</instance>
+<instance part="P+5" gate="VCC" x="208.28" y="154.94" smashed="yes" rot="R270">
+<attribute name="VALUE" x="205.74" y="157.48" size="1.778" layer="96"/>
 </instance>
 </instances>
 <busses>
@@ -1129,21 +1147,11 @@ Source: &lt;a href="https://www.molex.com/pdm_docs/sd/528520670_sd.pdf"&gt; Data
 <pinref part="P+4" gate="VCC" pin="VCC"/>
 </segment>
 <segment>
-<pinref part="C1" gate="G$1" pin="2"/>
-<wire x1="175.26" y1="127" x2="193.04" y2="127" width="0.1524" layer="91"/>
-<wire x1="193.04" y1="127" x2="193.04" y2="154.94" width="0.1524" layer="91"/>
-<pinref part="HM1" gate="G$1" pin="VDD"/>
-<wire x1="185.42" y1="154.94" x2="193.04" y2="154.94" width="0.1524" layer="91"/>
-<pinref part="P+6" gate="VCC" pin="VCC"/>
-<junction x="193.04" y="154.94"/>
-</segment>
-<segment>
 <pinref part="R6" gate="G$1" pin="2"/>
 <pinref part="P+7" gate="VCC" pin="VCC"/>
-</segment>
-<segment>
 <pinref part="R5" gate="G$1" pin="2"/>
-<pinref part="P+8" gate="VCC" pin="VCC"/>
+<wire x1="160.02" y1="195.58" x2="144.78" y2="195.58" width="0.1524" layer="91"/>
+<junction x="144.78" y="195.58"/>
 </segment>
 <segment>
 <pinref part="R4" gate="G$1" pin="2"/>
@@ -1155,6 +1163,14 @@ Source: &lt;a href="https://www.molex.com/pdm_docs/sd/528520670_sd.pdf"&gt; Data
 <wire x1="198.12" y1="55.88" x2="208.28" y2="55.88" width="0.1524" layer="91"/>
 <wire x1="208.28" y1="55.88" x2="208.28" y2="63.5" width="0.1524" layer="91"/>
 <pinref part="P+10" gate="VCC" pin="VCC"/>
+</segment>
+<segment>
+<pinref part="IC1" gate="G$1" pin="VDD"/>
+<wire x1="200.66" y1="154.94" x2="205.74" y2="154.94" width="0.1524" layer="91"/>
+<pinref part="C2" gate="G$1" pin="2"/>
+<wire x1="205.74" y1="154.94" x2="205.74" y2="147.32" width="0.1524" layer="91"/>
+<pinref part="P+5" gate="VCC" pin="VCC"/>
+<junction x="205.74" y="154.94"/>
 </segment>
 </net>
 <net name="GND" class="0">
@@ -1181,23 +1197,23 @@ Source: &lt;a href="https://www.molex.com/pdm_docs/sd/528520670_sd.pdf"&gt; Data
 <pinref part="GND4" gate="1" pin="GND"/>
 </segment>
 <segment>
-<pinref part="HM1" gate="G$1" pin="EP"/>
-<pinref part="GND6" gate="1" pin="GND"/>
-</segment>
-<segment>
-<wire x1="144.78" y1="154.94" x2="144.78" y2="127" width="0.1524" layer="91"/>
-<pinref part="C1" gate="G$1" pin="1"/>
-<wire x1="144.78" y1="127" x2="167.64" y2="127" width="0.1524" layer="91"/>
-<pinref part="GND7" gate="1" pin="GND"/>
-<junction x="144.78" y="127"/>
-<pinref part="HM1" gate="G$1" pin="GND"/>
-<wire x1="154.94" y1="154.94" x2="144.78" y2="154.94" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="J2" gate="G$1" pin="6"/>
 <wire x1="198.12" y1="43.18" x2="203.2" y2="43.18" width="0.1524" layer="91"/>
 <wire x1="203.2" y1="43.18" x2="203.2" y2="40.64" width="0.1524" layer="91"/>
 <pinref part="GND8" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="IC1" gate="G$1" pin="VSS"/>
+<pinref part="GND6" gate="1" pin="GND"/>
+<wire x1="200.66" y1="160.02" x2="215.9" y2="160.02" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="C1" gate="G$1" pin="2"/>
+<pinref part="GND5" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="C2" gate="G$1" pin="1"/>
+<pinref part="GND7" gate="1" pin="GND"/>
 </segment>
 </net>
 <net name="RX" class="0">
@@ -1310,13 +1326,14 @@ Source: &lt;a href="https://www.molex.com/pdm_docs/sd/528520670_sd.pdf"&gt; Data
 <label x="-78.74" y="55.88" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="HM1" gate="G$1" pin="SCK"/>
-<wire x1="185.42" y1="157.48" x2="195.58" y2="157.48" width="0.1524" layer="91"/>
-<label x="208.28" y="157.48" size="1.778" layer="95"/>
+<label x="129.54" y="162.56" size="1.778" layer="95"/>
 <pinref part="R5" gate="G$1" pin="1"/>
-<wire x1="195.58" y1="157.48" x2="213.36" y2="157.48" width="0.1524" layer="91"/>
-<wire x1="195.58" y1="172.72" x2="195.58" y2="157.48" width="0.1524" layer="91"/>
-<junction x="195.58" y="157.48"/>
+<wire x1="160.02" y1="162.56" x2="129.54" y2="162.56" width="0.1524" layer="91"/>
+<wire x1="160.02" y1="175.26" x2="160.02" y2="162.56" width="0.1524" layer="91"/>
+<pinref part="IC1" gate="G$1" pin="SCL"/>
+<wire x1="175.26" y1="160.02" x2="175.26" y2="162.56" width="0.1524" layer="91"/>
+<wire x1="175.26" y1="162.56" x2="160.02" y2="162.56" width="0.1524" layer="91"/>
+<junction x="160.02" y="162.56"/>
 </segment>
 </net>
 <net name="SDA" class="0">
@@ -1326,13 +1343,21 @@ Source: &lt;a href="https://www.molex.com/pdm_docs/sd/528520670_sd.pdf"&gt; Data
 <label x="-78.74" y="53.34" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="HM1" gate="G$1" pin="DATA"/>
-<wire x1="154.94" y1="157.48" x2="144.78" y2="157.48" width="0.1524" layer="91"/>
-<label x="132.08" y="157.48" size="1.778" layer="95"/>
+<label x="129.54" y="157.48" size="1.778" layer="95"/>
 <pinref part="R6" gate="G$1" pin="1"/>
 <wire x1="144.78" y1="157.48" x2="129.54" y2="157.48" width="0.1524" layer="91"/>
 <wire x1="144.78" y1="175.26" x2="144.78" y2="157.48" width="0.1524" layer="91"/>
+<pinref part="IC1" gate="G$1" pin="SDA"/>
+<wire x1="175.26" y1="157.48" x2="144.78" y2="157.48" width="0.1524" layer="91"/>
 <junction x="144.78" y="157.48"/>
+</segment>
+</net>
+<net name="N$3" class="0">
+<segment>
+<pinref part="IC1" gate="G$1" pin="VC"/>
+<wire x1="175.26" y1="154.94" x2="170.18" y2="154.94" width="0.1524" layer="91"/>
+<pinref part="C1" gate="G$1" pin="1"/>
+<wire x1="170.18" y1="154.94" x2="170.18" y2="147.32" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
