@@ -1,0 +1,368 @@
+#include <Arduino.h>
+#include <ESP8266WiFi.h>
+#include <PubSubClient.h>
+#include "setup.h"
+#include "OneButton.h"
+
+#define DEBUG
+
+bool AP_MODE = false;
+const long AP_DELAY = 500;
+bool CONNECTION_STATUS = false;
+const long STATUS_DELAY = 2000;
+unsigned long last_time = 0;
+
+bool SWITCH_STATE = false;
+int SWITCH_COUNTER = 0;
+const int DEBOUNCE_TIME = 200;
+const int SWITCH_COUNT_TIME = 1000;
+const int LED_PIN = 2;
+const int STATUS_LED = 13;
+OneButton button(14, true);
+
+unsigned long PREVIOU_MILLIS = 0;
+
+String topic_string = "";
+String mqtt_user = "";
+String mqtt_password = "";
+String device_name = "";
+String ssid = "";
+String password = "";
+String broker = "";
+int port = 1883;
+
+WiFiClient espClient;
+PubSubClient client(espClient);
+unsigned long PREVIOU_MILLIS_MQTT = 0;
+WiFiEventHandler disconnectedEventHandler;
+
+void setup_wifi()
+{
+#ifdef DEBUG
+  Serial.println("WiFi connecting...");
+  Serial.println("SSID: " + ssid);
+  Serial.println("PSW: " + password);
+#endif
+
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(ssid, password);
+
+#ifdef DEBUG
+  Serial.println("WiFi connected.");
+#endif
+  WiFi.setAutoReconnect(true);
+  WiFi.persistent(true);
+}
+
+boolean reconnect()
+{
+  if (client.connect(String(ESP.getChipId()).c_str(),
+                     "",
+                     "",
+                     topic_string.c_str(),
+                     0,
+                     true,
+                     "poff"))
+  {
+  }
+#ifdef DEBUG
+  Serial.println("MQTT connecting...");
+#endif
+  return client.connected();
+}
+
+void check_mqtt_connection()
+{
+
+  if (!AP_MODE)
+  {
+    if (WiFi.status() == WL_CONNECTED)
+    {
+      if (!client.connected())
+      {
+        CONNECTION_STATUS = false;
+        unsigned long CURRENT_MILLIS_MQTT = millis();
+        if (CURRENT_MILLIS_MQTT - PREVIOU_MILLIS_MQTT > 5000UL)
+        {
+          PREVIOU_MILLIS_MQTT = CURRENT_MILLIS_MQTT;
+
+#ifdef DEBUG
+          Serial.println("MQTT disconnected");
+#endif
+          if (reconnect())
+          {
+#ifdef DEBUG
+            Serial.println("MQTT connected");
+            Serial.println("BROKER: " + broker);
+            Serial.println("USER: " + mqtt_user);
+            Serial.println("PASSWORD: " + mqtt_password);
+            Serial.println("DEVICE: " + device_name);
+            Serial.println("TOPIC:" + topic_string);
+#endif
+            CONNECTION_STATUS = true;
+            client.publish(topic_string.c_str(), "pon", true);
+            PREVIOU_MILLIS_MQTT = 0;
+          }
+        }
+      }
+    }
+    client.loop();
+  }
+}
+
+void reset_device()
+{
+  for (int i = 0; i <= 10; i++)
+  {
+    digitalWrite(LED_PIN, LOW);
+    delay(50);
+    digitalWrite(LED_PIN, HIGH);
+    delay(50);
+  }
+  LittleFS.format();
+  ESP.restart();
+}
+
+void ap_blink()
+{
+  if (AP_MODE == true)
+  {
+    server.handleClient();
+    unsigned long CURRENT_MILLIS = millis();
+    if (CURRENT_MILLIS - PREVIOU_MILLIS >= AP_DELAY)
+    {
+      PREVIOU_MILLIS = CURRENT_MILLIS;
+      digitalWrite(LED_PIN, !digitalRead(LED_PIN));
+    }
+  }
+}
+
+void status_blink()
+{
+  if (CONNECTION_STATUS == false)
+  {
+    unsigned long CURRENT_MILLIS = millis();
+    if (CURRENT_MILLIS - PREVIOU_MILLIS >= STATUS_DELAY)
+    {
+      PREVIOU_MILLIS = CURRENT_MILLIS;
+      digitalWrite(LED_PIN, !digitalRead(LED_PIN));
+    }
+  }
+  else
+  {
+
+    digitalWrite(LED_PIN, HIGH);
+  }
+}
+
+void click1()
+{
+
+  SWITCH_STATE = !SWITCH_STATE;
+  digitalWrite(STATUS_LED, SWITCH_STATE);
+#ifdef DEBUG
+  Serial.println("Click " + String(SWITCH_STATE));
+#endif
+
+  if (client.connected())
+  {
+    client.publish(topic_string.c_str(), String(SWITCH_STATE).c_str(), true);
+    #ifdef DEBUG
+  Serial.println("Sand " + String(SWITCH_STATE));
+#endif
+  }
+}
+
+void doubleclick()
+{
+#ifdef DEBUG
+  Serial.println("Double click");
+#endif
+}
+
+void longPressStop()
+{
+#ifdef DEBUG
+  Serial.println("Long press");
+#endif
+  reset_device();
+}
+
+void setup()
+{
+
+#ifdef DEBUG
+  Serial.begin(9600);
+  delay(50);
+  Serial.println(" ");
+  Serial.println("WiFi Rele");
+#endif
+
+  pinMode(LED_PIN, OUTPUT);
+  pinMode(STATUS_LED, OUTPUT);
+  digitalWrite(LED_PIN, LOW);
+  digitalWrite(STATUS_LED, LOW);
+  button.attachClick(click1);
+  button.attachDoubleClick(doubleclick);
+  button.attachLongPressStop(longPressStop);
+
+  check_config();
+
+  if (!AP_MODE)
+  {
+    setup_wifi();
+  }
+
+  disconnectedEventHandler = WiFi.onStationModeDisconnected([](const WiFiEventStationModeDisconnected &event)
+                                                            {
+                                                              CONNECTION_STATUS = false;
+
+#ifdef DEBUG
+                                                              Serial.println("WiFi disconnected");
+#endif
+                                                            });
+
+  client.setServer(broker.c_str(), 1883);
+}
+
+void loop()
+{
+  
+  status_blink();
+  ap_blink();
+  check_mqtt_connection();
+  button.tick();
+  // client.loop();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include <ESP8266WiFi.h>
+#include <PubSubClient.h>
+
+// Update these with values suitable for your network.
+
+const char* ssid = "Casa Dascoli ";
+const char* password = "RosalbaChristianAsso";
+const char* mqtt_server = "broker.hivemq.com";
+
+WiFiClient espClient;
+PubSubClient client(espClient);
+unsigned long lastMsg = 0;
+#define MSG_BUFFER_SIZE	(50)
+char msg[MSG_BUFFER_SIZE];
+int value = 0;
+
+void setup_wifi() {
+
+  delay(10);
+  // We start by connecting to a WiFi network
+  Serial.println();
+  Serial.print("Connecting to ");
+  Serial.println(ssid);
+
+  WiFi.mode(WIFI_STA);
+  WiFi.begin(ssid, password);
+
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+
+  randomSeed(micros());
+
+  Serial.println("");
+  Serial.println("WiFi connected");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
+}
+
+void callback(char* topic, byte* payload, unsigned int length) {
+  Serial.print("Message arrived [");
+  Serial.print(topic);
+  Serial.print("] ");
+  for (int i = 0; i < length; i++) {
+    Serial.print((char)payload[i]);
+  }
+  Serial.println();
+
+  // Switch on the LED if an 1 was received as first character
+  if ((char)payload[0] == '1') {
+    digitalWrite(BUILTIN_LED, LOW);   // Turn the LED on (Note that LOW is the voltage level
+    // but actually the LED is on; this is because
+    // it is active low on the ESP-01)
+  } else {
+    digitalWrite(BUILTIN_LED, HIGH);  // Turn the LED off by making the voltage HIGH
+  }
+
+}
+
+void reconnect() {
+  // Loop until we're reconnected
+  while (!client.connected()) {
+    Serial.print("Attempting MQTT connection...");
+    // Create a random client ID
+    String clientId = "ESP8266Client-";
+    clientId += String(random(0xffff), HEX);
+    // Attempt to connect
+    if (client.connect(clientId.c_str())) {
+      Serial.println("connected");
+      // Once connected, publish an announcement...
+      client.publish("christian/christian/wifirele/rele", "pon");
+      // ... and resubscribe
+      client.subscribe("christian/christian/wifirele");
+    } else {
+      Serial.print("failed, rc=");
+      Serial.print(client.state());
+      Serial.println(" try again in 5 seconds");
+      // Wait 5 seconds before retrying
+      delay(5000);
+    }
+  }
+}
+
+void setup() {
+  pinMode(BUILTIN_LED, OUTPUT);     // Initialize the BUILTIN_LED pin as an output
+  Serial.begin(9600);
+  setup_wifi();
+  client.setServer(mqtt_server, 1883);
+  client.setCallback(callback);
+}
+
+void loop() {
+
+  if (!client.connected()) {
+    reconnect();
+  }
+  client.loop();
+
+  unsigned long now = millis();
+  if (now - lastMsg > 2000) {
+    lastMsg = now;
+    ++value;
+    snprintf (msg, MSG_BUFFER_SIZE, "hello world #%ld", value);
+    Serial.print("Publish message: ");
+    Serial.println(msg);
+    client.publish("christian/christian/wifirele/rele", msg);
+  }
+}
