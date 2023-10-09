@@ -31,7 +31,7 @@ Su ogni dispositivo è presente un connettore FFC a 6 poli grazie al quale è po
 
 
 
-# MODULI ESP32
+## ISTRUZIONI MODULI ESP32
 
   - Arduino IDE
     
@@ -70,7 +70,7 @@ Su ogni dispositivo è presente un connettore FFC a 6 poli grazie al quale è po
 
 
 
-# MODULI ESP8266
+## ISTRUZIONI MODULI ESP8266
 
   - Arduino IDE
     
