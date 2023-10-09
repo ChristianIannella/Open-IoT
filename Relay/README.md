@@ -5,9 +5,20 @@
 
 
 
+# SPECIFICHE TECNICHE
+
+- Alimentazione 220VAC
+- Relè stato solido 220VAC 2A
+- Fusibile sostituibile 2A
+- MCU ESP8266
+- WiFi
+- 1 GPIO (D14)
+  
+
 
 | PINOUT |  |
 |---|---|
-|Service Button|D12|
-|Switch Button|D14|
-|Switch Led|D13|
+|Service Button|D12 (10K external pull-up)|
+|Switch Button|D14 (10K external pull-up)|
+|Switch Led|D13 (10K external pull-up)|
+
