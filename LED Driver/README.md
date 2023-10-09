@@ -17,4 +17,4 @@
 | PINOUT |  |
 |---|---|
 |Service Button|D12 (10K external pull-up)|
-|Strip Led Output|D13 (10K external pull-up)|
+|Strip Led Output|D13|
