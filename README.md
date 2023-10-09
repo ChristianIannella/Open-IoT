@@ -1,2 +1,2 @@
-# Domotica
+# Open IoT
 DIY IoT devices
