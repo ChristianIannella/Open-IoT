@@ -15,7 +15,7 @@ Le schede possono essere programmate sia da ambiente [Arduino](https://www.ardui
 
 Su ogni dispositivo è presente un connettore FFC a 6 poli grazie al quale è possibile collegare il [programmatore](https://github.com/ChristianIannella/Open-IoT/tree/main/ESP%20Updater) per cambiare firmware o testare il dispositivo.
 
-![ESP Uploader di Iannella Christian](https://github.com/ChristianIannella/Open-IoT/blob/main/Media/Photo/ESP%20Uploader.JPG)
+![ESP Uploader di Iannella Christian](https://github.com/ChristianIannella/Open-IoT/blob/main/Media/Photo/FFC.JPG)
 
 
 # ELENCO DISPOSITIVI
