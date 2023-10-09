@@ -19,7 +19,7 @@ Su ogni dispositivo è presente un connettore FFC a 6 poli grazie al quale è po
 ![ESP Uploader di Iannella Christian](https://github.com/ChristianIannella/Open-IoT/blob/main/Media/Photo/ESP%20Uploader.JPG)
 
 
-#ELENCO DISPOSITIVI
+# ELENCO DISPOSITIVI
 
 - [ESP Uploader](https://github.com/ChristianIannella/Open-IoT/tree/main/ESP%20Uploader)
 - [ESP8266 Relay](https://github.com/ChristianIannella/Open-IoT/tree/main/Relay)
