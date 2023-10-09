@@ -34,11 +34,11 @@ Su ogni dispositivo è presente un connettore FFC a 6 poli grazie al quale è po
 
   - Arduino IDE
     
-    Vai a 'File'  'Impostazioni'  'URL Aggiuntive'
+    Vai a `File`  `Impostazioni`  `URL Aggiuntive`
     
     Aggiungere il seguente URL: https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
 
-    Poi vai a 'Strumenti'  'Scheda'  'Gestore Schede'
+    Poi vai a `Strumenti`  `Scheda`  `Gestore Schede`
 
     Cerca esp32 e installa 
 
@@ -51,9 +51,9 @@ Su ogni dispositivo è presente un connettore FFC a 6 poli grazie al quale è po
     
   - VS Code (PlatformIO):
 
-    Avvia VS Code e vai a PIO Home 'New project'
+    Avvia VS Code e vai a PIO Home `New project`
 
-    Seleziona Board: 'Adafruit ESP32 Feather' Framework: 'Arduino'
+    Seleziona Board: `Adafruit ESP32 Feather` Framework: `Arduino`
 
     Il tuo file platformio.ini dovrà essere simile a questo:
     
@@ -73,11 +73,11 @@ Su ogni dispositivo è presente un connettore FFC a 6 poli grazie al quale è po
 
   - Arduino IDE
     
-    Vai a 'File'  'Impostazioni'  'URL Aggiuntive'
+    Vai a `File`  `Impostazioni`  `URL Aggiuntive`
     
     Aggiungere il seguente URL: https://arduino.esp8266.com/stable/package_esp8266com_index.json
 
-    Poi vai a 'Strumenti'  'Scheda'  'Gestore Schede'
+    Poi vai a `Strumenti`  `Scheda`  `Gestore Schede`
 
     Cerca esp8266 e installa 
 
@@ -88,9 +88,9 @@ Su ogni dispositivo è presente un connettore FFC a 6 poli grazie al quale è po
     
   - VS Code (PlatformIO):
 
-    Avvia VS Code e vai a PIO Home 'New project'
+    Avvia VS Code e vai a PIO Home `New project`
 
-    Seleziona Board: 'Adafruit HUZZAH ESP8266' Framework: 'Arduino'
+    Seleziona Board: `Adafruit HUZZAH ESP8266` Framework: `Arduino`
 
     Il tuo file platformio.ini dovrà essere simile a questo:
     
