@@ -17,4 +17,12 @@ Su ogni dispositivo è presente un connettore FFC a 6 poli grazie al quale è po
 ![ESP Uploader di Iannella Christian](https://github.com/ChristianIannella/Open-IoT/blob/main/Media/Photo/ESP%20Uploader.JPG)
 
 
+#ELENCO DISPOSITIVI
+
+- [ESP Uploader](https://github.com/ChristianIannella/Open-IoT/tree/main/ESP%20Uploader)
+- [ESP8266 Relay](https://github.com/ChristianIannella/Open-IoT/tree/main/Relay)
+- [ESP8266 Encoder](https://github.com/ChristianIannella/Open-IoT/tree/main/Encoder)
+- [ESP8266 Thermometer](https://github.com/ChristianIannella/Open-IoT/tree/main/Thermometer)
+- [ESP8266 Led Driver](https://github.com/ChristianIannella/Open-IoT/tree/main/LED%20Driver)
+- More coming soon.
 
