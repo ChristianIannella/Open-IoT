@@ -6,7 +6,7 @@
 
 
 
-|PINOUT PIN|
+| PINOUT |  |
 |---|---|
 |Service Button|D12|
 |Switch Button|D14|
