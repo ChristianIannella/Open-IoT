@@ -14,6 +14,8 @@ A bordo è presente un regolatore di tensione LDO da 1A (LDI1117-3.3H) un led di
 
 ATTENZIONE! La scheda è compatibile solo con tensione 3.3V
 
+![ESP Uploader Pinout](https://github.com/ChristianIannella/Open-IoT/blob/main/Media/Photo/ESP%20Uploader%20Pinout.JPG)
+
 |PINOUT||
 |---|---|
 |1|3.3V|
