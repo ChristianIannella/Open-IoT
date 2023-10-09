@@ -13,7 +13,7 @@ I dispositivi sono basati su ESP8266 e ESP32 questo permette connettività WiFi 
 
 Le schede possono essere programmate sia da ambiente [Arduino](https://www.arduino.cc/en/software) sia [PlatformIO](https://platformio.org/) 
 
-Su ogni dispositivo è presente un connettore FFC a 6 poli grazie al quale è possibile collegare il [programmatore](https://github.com/ChristianIannella/Open-IoT/tree/main/ESP%20Updater) per cambiare firmware o testare il dispositivo.
+Su ogni dispositivo è presente un connettore FFC a 6 poli grazie al quale è possibile collegare il [programmatore](https://github.com/ChristianIannella/Open-IoT/tree/main/ESP%20Uploader) per cambiare firmware o testare il dispositivo.
 
 ![ESP Uploader di Iannella Christian](https://github.com/ChristianIannella/Open-IoT/blob/main/Media/Photo/FFC.JPG)
 
