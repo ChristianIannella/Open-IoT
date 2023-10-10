@@ -26,3 +26,77 @@ ATTENZIONE! La scheda è compatibile solo con tensione 3.3V
 |4|TX|
 |5|RX|
 |6|GND|
+
+
+
+## ISTRUZIONI MODULI ESP32
+
+  - Arduino IDE
+    
+    Vai a `File`  `Impostazioni`  `URL Aggiuntive`
+    
+    Aggiungere il seguente URL: https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+
+    Poi vai a `Strumenti`  `Scheda`  `Gestore Schede`
+
+    Cerca esp32 e installa 
+
+    In fine seleziona la seguente scheda `Adafruit ESP32 Feather`
+
+    Ora puoi caricare il tuo sketch!
+  
+    
+    
+    
+  - VS Code (PlatformIO):
+
+    Avvia VS Code e vai a PIO Home `New project`
+
+    Seleziona Board: `Adafruit ESP32 Feather` Framework: `Arduino`
+
+    Il tuo file platformio.ini dovrà essere simile a questo:
+    
+      [env:featheresp32]
+    
+      platform = espressif32
+  
+      board = featheresp32
+  
+      framework = arduino 
+    
+    
+
+
+
+## ISTRUZIONI MODULI ESP8266
+
+  - Arduino IDE
+    
+    Vai a `File`  `Impostazioni`  `URL Aggiuntive`
+    
+    Aggiungere il seguente URL: https://arduino.esp8266.com/stable/package_esp8266com_index.json
+
+    Poi vai a `Strumenti`  `Scheda`  `Gestore Schede`
+
+    Cerca esp8266 e installa 
+
+    In fine seleziona la seguente scheda `Generic ESP8266 Module`
+
+    Ora puoi caricare il tuo sketch!
+    
+    
+  - VS Code (PlatformIO):
+
+    Avvia VS Code e vai a PIO Home `New project`
+
+    Seleziona Board: `Adafruit HUZZAH ESP8266` Framework: `Arduino`
+
+    Il tuo file platformio.ini dovrà essere simile a questo:
+    
+      [env:huzzah]
+      
+      platform = espressif8266
+  
+      board = huzzah
+  
+      framework = arduino
