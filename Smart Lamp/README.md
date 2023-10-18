@@ -1,5 +1,4 @@
- # LampApp
-A pretty remotely controlled lamp.
+ # Smart Lamp
 
 🇮🇹
 
