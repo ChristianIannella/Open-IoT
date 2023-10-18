@@ -3,10 +3,7 @@
 
 #include "Arduino.h"
 #include <ESP8266WiFi.h>
-#include <WiFiClient.h>
-//#include <DNSServer.h>
 #include <ESP8266WebServer.h>
-
 #include "LittleFS.h"
 #include "data.h"
 #include "save.h"
@@ -16,7 +13,7 @@
 #define DEBUG
 
 String clientid = String(ESP.getChipId()).c_str();
-String ssid_str = "ESP Thermometer" + clientid;
+String ssid_str = "ESP Thermometer " + clientid;
 
 const char *ap_ssid = (ssid_str.c_str()) ;
 const char *ap_password = "12345678";
@@ -31,23 +28,14 @@ void handleNotFound();
 void handlesave();
 
 void handleconf() {
-  #ifdef DEBUG
-    Serial.println("data page");
-  #endif
   server.send(200, "text/html", data);
 }
 
 void handleinfo() {
-  #ifdef DEBUG
-    Serial.println("info page");
-  #endif
   server.send(200, "text/html", info);
 }
 
 void handleNotFound() {
-  #ifdef DEBUG
-    Serial.println("not found");
-  #endif  
   server.send(404, "text/html", notfound);
 }
 
@@ -100,9 +88,6 @@ void handlesave()
       }
     }
   }
-  #ifdef DEBUG
-    Serial.println("save");
-  #endif
   server.send(200, "text/html", save);
   delay(1000);
   ESP.restart();
@@ -113,21 +98,11 @@ void create_ap() {
   AP_MODE = true;
 
   WiFi.mode(WIFI_AP_STA);
-  //WiFi.softAPConfig(apIP, apIP, IPAddress(255, 255, 255, 0));
   WiFi.softAP(ap_ssid, ap_password);
-  IPAddress IP = WiFi.softAPIP();
-  #ifdef DEBUG
-    Serial.println(IP);
-  #endif
-  //dnsServer.setTTL(300);
-  //dnsServer.setErrorReplyCode(DNSReplyCode::ServerFailure);
-  //nsServer.start(DNS_PORT, "www.wifithermometer.com", apIP);
   server.on("/", handleconf );
   server.on("/save", handlesave);
   server.on("/info", handleinfo);
   server.onNotFound(handleNotFound);
   server.begin();
-
 }
-
 #endif

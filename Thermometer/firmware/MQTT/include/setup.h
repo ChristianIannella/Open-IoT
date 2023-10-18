@@ -11,26 +11,19 @@ void check_config();
 
 void check_config()
 {
- LittleFS.begin();
+  LittleFS.begin();
   File ssid_file = LittleFS.open(F("/ssid.txt"), "r");
-  if (ssid_file) {
-    if (ssid_file.readString() != "") {
-      #ifdef DEBUG
-        Serial.println("Dispositivo configurato");
-      #endif
+  if (ssid_file)
+  {
+    if (ssid_file.readString() != "")
+    {
     }
     ssid_file.close();
     read_data();
-
-  } 
-  else{
-
-    #ifdef DEBUG
-      Serial.println("Dispositivo da configurare");
-    #endif
-
+  }
+  else
+  {
     create_ap();
   }
 }
-
 #endif
