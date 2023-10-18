@@ -7,7 +7,7 @@
 
 
 Si tratta di una scheda di sviluppo basata su ESP32 WROOM. Compatibile sia con Arduino che MicroPythn. 
-La scheda all' acquisto arriverà con il firmware gia installato. Nel caso si volesse scrivere il proprio basterà collegarla tramite USB-C al pc e caricare il nuovo firmware come una normale scheda di sviluppo ESP32.
+Per caricare lo sketch basterà collegare Smart Lamp tramite USB-C al pc e caricare il nuovo firmware come una normale scheda di sviluppo ESP32.
 
 Nel caso state usando PlatformIO usate queste ipostazioni:
 
