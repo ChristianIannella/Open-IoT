@@ -29,7 +29,6 @@ You can use mqtt brokers like (any broker.hivemq.com or broker.emqx.io) just rem
 * [Android](https://play.google.com/store/apps/details?id=com.lampapp.lampapp&hl=it&gl=IT) 
 
 * iOS: coming soon
-* 
 
 # User Guide
 
