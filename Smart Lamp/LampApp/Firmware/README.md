@@ -1,5 +1,5 @@
 
-# LampApp Devices
+# Smart Lamp
 
 
 ![This is an image](https://github.com/ChristianIannella/LampApp/blob/main/PCB/File/1.png)
