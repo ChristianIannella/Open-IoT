@@ -24,10 +24,14 @@ Through the app it is possible to control all the devices that you have installe
 You can use mqtt brokers like (any broker.hivemq.com or broker.emqx.io) just remember that it must be the same for all devices.
 
 
-[Download for Android](https://play.google.com/store/apps/details?id=com.lampapp.lampapp&hl=it&gl=IT) 
+# Download
 
-iOS: coming soon 
+* [Android](https://play.google.com/store/apps/details?id=com.lampapp.lampapp&hl=it&gl=IT) 
 
+* iOS: coming soon
+* 
+
+# User Guide
 
 * [How the app works?(Come funziona l'app?)](https://github.com/ChristianIannella/LampApp/blob/main/Kivy%20App/README.md)
 
