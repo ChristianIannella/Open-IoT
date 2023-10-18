@@ -13,7 +13,7 @@ Potrai usare qualsiasi broker mqtt come (broker.hivemq.com oppure broker.emqx.io
 
 * [Come funziona l'App?](https://github.com/ChristianIannella/Open-IoT/tree/main/Smart%20Lamp/LampApp/App)
 
-* [Come funziona il dispositivo?](https://github.com/ChristianIannella/LampApp/blob/main/Firmware/README.md)
+* [Come funziona il dispositivo?](https://github.com/ChristianIannella/Open-IoT/tree/main/Smart%20Lamp/LampApp/Firmware)
 
 
 # Download
