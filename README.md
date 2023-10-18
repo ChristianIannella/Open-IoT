@@ -25,6 +25,7 @@ Su ogni dispositivo è presente un connettore FFC a 6 poli grazie al quale è po
 - [ESP8266 Encoder](https://github.com/ChristianIannella/Open-IoT/tree/main/Encoder)
 - [ESP8266 Thermometer](https://github.com/ChristianIannella/Open-IoT/tree/main/Thermometer)
 - [ESP8266 Led Driver](https://github.com/ChristianIannella/Open-IoT/tree/main/LED%20Driver)
+- [Smart Lamp](https://github.com/ChristianIannella/Open-IoT/tree/main/Smart%20Lamp)
 - More coming soon.
 
 
