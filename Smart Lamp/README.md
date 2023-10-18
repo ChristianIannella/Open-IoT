@@ -11,9 +11,9 @@ Potrai usare qualsiasi broker mqtt come (broker.hivemq.com oppure broker.emqx.io
 
 # User Guide
 
-* [How the app works?(Come funziona l'app?)](https://github.com/ChristianIannella/LampApp/blob/main/Kivy%20App/README.md)
+* [Come funziona l'App?](https://github.com/ChristianIannella/LampApp/blob/main/Kivy%20App/README.md)
 
-* [How the device works?(Come funziona il dispositivo?)](https://github.com/ChristianIannella/LampApp/blob/main/Firmware/README.md)
+* [Come funziona il dispositivo?](https://github.com/ChristianIannella/LampApp/blob/main/Firmware/README.md)
 
 
 # Download
