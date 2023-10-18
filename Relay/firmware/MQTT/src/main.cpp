@@ -86,7 +86,7 @@ void onMqttMessage(char *topic, char *payload, AsyncMqttClientMessageProperties 
   else if ((char)payload[0] == '0')
   {
     SWITCH_STATE = LOW;
-    digitalWrite(STATUS_LED, LOW);
+    digitalWrite(STATUS_LED, SWITCH_STATE);
     digitalWrite(RELAY_PIN, SWITCH_STATE);
     mqttClient.publish(topic_string.c_str(), 2, true, String(SWITCH_STATE).c_str());
   }
