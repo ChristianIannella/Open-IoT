@@ -37,6 +37,16 @@ void read_data()
 
   topic_string = (mqtt_user + "/" + mqtt_password + "/wifiencoder/" + device_name);
 
+  #ifdef DEBUG
+            Serial.println("SSID: " + ssid);
+            Serial.println("WIFI PASSWORD: " + password);
+            Serial.println("BROKER: " + broker);
+            Serial.println("USER: " + mqtt_user);
+            Serial.println("MQTT PASSWORD: " + mqtt_password);
+            Serial.println("DEVICE NAME: " + device_name);
+            Serial.println(" ");
+#endif
+
 }
 
 #endif

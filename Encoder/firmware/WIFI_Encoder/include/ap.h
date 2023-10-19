@@ -4,7 +4,6 @@
 #include "Arduino.h"
 #include <ESP8266WiFi.h>
 #include <WiFiClient.h>
-//#include <DNSServer.h>
 #include <ESP8266WebServer.h>
 
 #include "LittleFS.h"
@@ -111,23 +110,16 @@ void handlesave()
 void create_ap() {
 
   AP_MODE = true;
-
   WiFi.mode(WIFI_AP_STA);
-  //WiFi.softAPConfig(apIP, apIP, IPAddress(255, 255, 255, 0));
   WiFi.softAP(ap_ssid, ap_password);
   IPAddress IP = WiFi.softAPIP();
   #ifdef DEBUG
     Serial.println(IP);
   #endif
-  //dnsServer.setTTL(300);
-  //dnsServer.setErrorReplyCode(DNSReplyCode::ServerFailure);
-  //nsServer.start(DNS_PORT, "www.wifiencoder.com", apIP);
   server.on("/", handleconf );
   server.on("/save", handlesave);
   server.on("/info", handleinfo);
   server.onNotFound(handleNotFound);
   server.begin();
-
 }
-
 #endif

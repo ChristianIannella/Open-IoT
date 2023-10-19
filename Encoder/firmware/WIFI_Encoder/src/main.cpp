@@ -1,10 +1,17 @@
 #include <Arduino.h>
 #include <ESP8266WiFi.h>
-#include <PubSubClient.h>
 #include "setup.h"
 #include "OneButton.h"
+#include <Ticker.h>
+#include <AsyncMqttClient.h>
 
-#define DEBUG 
+#define DEBUG
+
+AsyncMqttClient mqttClient;
+Ticker mqttReconnectTimer;
+WiFiEventHandler wifiConnectHandler;
+WiFiEventHandler wifiDisconnectHandler;
+Ticker wifiReconnectTimer;
 
 bool AP_MODE = false;
 const long AP_DELAY = 500;
@@ -20,6 +27,7 @@ const int LED_PIN = 2;
 OneButton button(12, true);
 const int PIN_A = 13;
 const int PIN_B = 14;
+
 int ENCODER_COUNTER = 0;
 int A_STATE;
 int A_LAST_STATE;
@@ -35,82 +43,65 @@ String password = "";
 String broker = "";
 int port = 1883;
 
-WiFiClient espClient;
-PubSubClient client(espClient);
-unsigned long PREVIOU_MILLIS_MQTT = 0;
-WiFiEventHandler disconnectedEventHandler;
-
-void setup_wifi()
+void send_data(String data_to_send)
 {
-#ifdef DEBUG
-  Serial.println("WiFi connecting...");
-  Serial.println("SSID: " + ssid);
-  Serial.println("PSW: " + password);
-#endif
-
-  WiFi.mode(WIFI_STA);
-  WiFi.begin(ssid, password);
-
-#ifdef DEBUG
-  Serial.println("WiFi connected.");
-#endif
-  WiFi.setAutoReconnect(true);
-  WiFi.persistent(true);
-}
-
-boolean reconnect()
-{
-  if (client.connect(String(ESP.getChipId()).c_str(),
-                     "",
-                     "",
-                     topic_string.c_str(),
-                     0,
-                     true,
-                     "poff"))
+  if (CONNECTION_STATUS)
   {
+    mqttClient.publish(topic_string.c_str(), 2, true, data_to_send.c_str());
   }
-#ifdef DEBUG
-  Serial.println("MQTT connecting...");
-#endif
-  return client.connected();
 }
 
-void check_mqtt_connection()
+void connectToWifi()
 {
+#ifdef DEBUG
+  Serial.println("Connecting to Wi-Fi...");
+#endif
+  WiFi.begin(ssid, password);
+}
 
-  if (!AP_MODE)
+void connectToMqtt()
+{
+#ifdef DEBUG
+  Serial.println("Connecting to MQTT...");
+#endif
+  mqttClient.connect();
+}
+
+void onWifiConnect(const WiFiEventStationModeGotIP &event)
+{
+#ifdef DEBUG
+  Serial.println("Connected to Wi-Fi.");
+#endif
+  connectToMqtt();
+}
+
+void onWifiDisconnect(const WiFiEventStationModeDisconnected &event)
+{
+#ifdef DEBUG
+  Serial.println("Disconnected from Wi-Fi.");
+#endif
+  mqttReconnectTimer.detach();
+  wifiReconnectTimer.once(2, connectToWifi);
+}
+
+void onMqttConnect(bool sessionPresent)
+{
+#ifdef DEBUG
+  Serial.println("Connected to MQTT.");
+#endif
+  CONNECTION_STATUS = true;
+  send_data("pon");
+}
+
+void onMqttDisconnect(AsyncMqttClientDisconnectReason reason)
+{
+#ifdef DEBUG
+  Serial.println("Disconnected from MQTT.");
+#endif
+  CONNECTION_STATUS = false;
+  if (WiFi.isConnected())
   {
-    if (WiFi.status() == WL_CONNECTED)
-    {
-      if (!client.connected())
-      {
-        CONNECTION_STATUS = false;
-        unsigned long CURRENT_MILLIS_MQTT = millis();
-        if (CURRENT_MILLIS_MQTT - PREVIOU_MILLIS_MQTT > 5000UL)
-        {
-          PREVIOU_MILLIS_MQTT = CURRENT_MILLIS_MQTT;
-
-#ifdef DEBUG
-          Serial.println("MQTT disconnected");
-#endif
-          if (reconnect())
-          {
-#ifdef DEBUG
-            Serial.println("MQTT connected");
-            Serial.println("BROKER: " + broker);
-            Serial.println("USER: " + mqtt_user);
-            Serial.println("PASSWORD: " + mqtt_password);
-            Serial.println("DEVICE: " + device_name);
-            Serial.println("TOPIC:" + topic_string);
-#endif
-            CONNECTION_STATUS = true;
-            client.publish(topic_string.c_str(), "pon", true);
-            PREVIOU_MILLIS_MQTT = 0;
-          }
-        }
-      }
-    }
-    client.loop();
+    mqttReconnectTimer.once(2, connectToMqtt);
   }
 }
 
@@ -129,8 +120,9 @@ void reset_device()
 
 void ap_blink()
 {
-  if (AP_MODE == true)
+  if (AP_MODE)
   {
+
     server.handleClient();
     unsigned long CURRENT_MILLIS = millis();
     if (CURRENT_MILLIS - PREVIOU_MILLIS >= AP_DELAY)
@@ -143,7 +135,7 @@ void ap_blink()
 
 void status_blink()
 {
-  if (CONNECTION_STATUS == true)
+  if (!CONNECTION_STATUS && !AP_MODE)
   {
     unsigned long CURRENT_MILLIS = millis();
     if (CURRENT_MILLIS - PREVIOU_MILLIS >= STATUS_DELAY)
@@ -152,13 +144,13 @@ void status_blink()
       digitalWrite(LED_PIN, !digitalRead(LED_PIN));
     }
   }
-  else
+  else if (CONNECTION_STATUS && !AP_MODE)
   {
-
-    digitalWrite(LED_PIN, HIGH);
+    digitalWrite(LED_PIN, LOW);
   }
 }
 
+int click = 0;
 void read_encoder()
 {
 
@@ -170,18 +162,43 @@ void read_encoder()
     {
       if (digitalRead(PIN_B) != A_STATE)
       {
-        ENCODER_COUNTER++;
+        click++;
+        if (click == 5)
+        {
+          click = 0;
+          ENCODER_COUNTER += 20;
+#ifdef DEBUG
+          Serial.println(ENCODER_COUNTER);
+#endif
+          if (CONNECTION_STATUS)
+          {
+            send_data(String(ENCODER_COUNTER));
+          }
+          if (ENCODER_COUNTER >= 250)
+          {
+            ENCODER_COUNTER = 0;
+          }
+        }
       }
       else
       {
-        ENCODER_COUNTER--;
-      }
+        click++;
+        if (click == 5)
+        {
+          click = 0;
+          ENCODER_COUNTER -= 20;
 #ifdef DEBUG
-      Serial.println(ENCODER_COUNTER);
+          Serial.println(ENCODER_COUNTER);
 #endif
-      if (client.connected())
-      {
-        client.publish(topic_string.c_str(), String(ENCODER_COUNTER).c_str(), true);
+          if (CONNECTION_STATUS)
+          {
+            send_data(String(ENCODER_COUNTER));
+          }
+          if (ENCODER_COUNTER <= 0)
+          {
+            ENCODER_COUNTER = 230;
+          }
+        }
       }
       PREVIOU_MILLIS = currentMillis;
     }
@@ -189,26 +206,40 @@ void read_encoder()
   A_LAST_STATE = A_STATE;
 }
 
-void click1() {
-  #ifdef DEBUG
-    Serial.println("Click");
-  #endif
-  SWITCH_STATE = !SWITCH_STATE;
-  if (client.connected()){
-    client.publish(topic_string.c_str(), String(SWITCH_STATE).c_str(), true);
-}
-}
-
-void doubleclick() {
-  #ifdef DEBUG
-      Serial.println("Double click");
+void click1()
+{
+#ifdef DEBUG
+  Serial.println("Click");
 #endif
-client.publish(topic_string.c_str(), "Double click", true);
+  SWITCH_STATE = !SWITCH_STATE;
+  if (SWITCH_STATE)
+  {
+    if (CONNECTION_STATUS)
+    {
+      send_data("On");
+    }
+  }
+  else
+  {
+    if (CONNECTION_STATUS)
+    {
+      send_data("Off");
+    }
+  }
 }
 
-void longPressStop() {
-  #ifdef DEBUG
-      Serial.println("Long press");
+void doubleclick()
+{
+#ifdef DEBUG
+  Serial.println("Double click");
+#endif
+  send_data("Double click");
+}
+
+void longPressStop()
+{
+#ifdef DEBUG
+  Serial.println("Long press");
 #endif
   reset_device();
 }
@@ -235,19 +266,14 @@ void setup()
 
   if (!AP_MODE)
   {
-    setup_wifi();
+    wifiConnectHandler = WiFi.onStationModeGotIP(onWifiConnect);
+    wifiDisconnectHandler = WiFi.onStationModeDisconnected(onWifiDisconnect);
+    mqttClient.onConnect(onMqttConnect);
+    mqttClient.onDisconnect(onMqttDisconnect);
+    mqttClient.setServer(broker.c_str(), port);
+    mqttClient.setKeepAlive(5).setWill(topic_string.c_str(), 2, true, "poff");
+    connectToWifi();
   }
-
-  disconnectedEventHandler = WiFi.onStationModeDisconnected([](const WiFiEventStationModeDisconnected &event)
-    {
-      CONNECTION_STATUS = false;
-
-#ifdef DEBUG
-      Serial.println("WiFi disconnected");
-#endif
-    });
-
-  client.setServer(broker.c_str(), 1883);
 }
 
 void loop()
@@ -255,6 +281,5 @@ void loop()
   status_blink();
   ap_blink();
   read_encoder();
-  check_mqtt_connection();
   button.tick();
 }

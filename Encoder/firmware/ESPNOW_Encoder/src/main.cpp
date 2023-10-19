@@ -5,7 +5,7 @@
 
 #define DEBUG
 
-OneButton button(12, true);
+OneButton button(2, true);
 const int ENCODER_DELAY = 200;
 const int LED_PIN = 2;
 const int PIN_A = 13;
@@ -59,8 +59,8 @@ void read_encoder()
 #ifdef DEBUG
         Serial.println("+");
 #endif
-        myData.switch_val = 0;
         myData.encoder_val = 1;
+        myData.switch_val = 0;
         esp_now_send(broadcastAddress, (uint8_t *)&myData, sizeof(myData));
       }
       else
@@ -68,8 +68,8 @@ void read_encoder()
 #ifdef DEBUG
         Serial.println("-");
 #endif
-        myData.switch_val = 0;
         myData.encoder_val = 2;
+        myData.switch_val = 0;
         esp_now_send(broadcastAddress, (uint8_t *)&myData, sizeof(myData));
       }
       PREVIOU_MILLIS = currentMillis;
